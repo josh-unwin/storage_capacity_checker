@@ -9,9 +9,10 @@ MINIMUM_DRIVE_SIZE_TO_CHECK_GB = 100 # Minimum size of volumes you want to check
 VOLUMES_TO_IGNORE = ["IGNORE_ME", "IGNORE_ME_TOO"] # A list of any volumes you want to ignore entirely.
 VOLUMES_TO_INCLUDE = [] # Optionally choose only volumes you want to include. If volumes are added here, all other volumes are ignored.
 
-print("Running storage capacity check...")
 
 def main():
+  print("Running storage capacity check...")
+  
   if len(VOLUMES_TO_INCLUDE) > 0:
     print("Using VOLUMES_TO_INCLUDE whitelist...")
     for volume in listdir("/Volumes"):
@@ -50,6 +51,7 @@ def check_volume(volume):
       print(f"\t- {volume} is OK, {100 - used_percentage}% available.")
   else:
     print(f"\t- Skipping {volume}, volume is in VOLUMES_TO_IGNORE")
+
 
 if __name__ == "__main__":
     main()
